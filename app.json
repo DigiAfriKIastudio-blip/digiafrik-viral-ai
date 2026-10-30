@@ -1,0 +1,16 @@
+{
+  "expo": {
+    "name": "DigiAfriK VIRAL AI",
+    "slug": "digiafrik-viral-ai",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "scheme": "digiafrikviral",
+    "userInterfaceStyle": "dark",
+    "newArchEnabled": true,
+    "android": {
+      "package": "com.digiafrik.viralai",
+      "versionCode": 1
+    },
+    "plugins": ["expo-router"]
+  }
+}
