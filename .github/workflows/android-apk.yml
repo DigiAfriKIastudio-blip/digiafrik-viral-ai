@@ -26,9 +26,12 @@ jobs:
         run: npx expo prebuild --platform android --clean --no-install
       - name: Inspect Expo autolinking metadata
         run: |
-          find node_modules -name expo-module.config.json -print -exec cat {} \\\;
+          while IFS= read -r file; do
+            echo "--- $file ---"
+            cat "$file"
+          done < <(find node_modules -name expo-module.config.json)
           echo '--- generated autolinking metadata ---'
-          find android -iname '*autolink*json' -o -iname '*modules*.json' | head -30
+          find android \( -iname '*autolink*json' -o -iname '*modules*.json' \) -print | head -30
       - name: Build installable debug APK
         working-directory: android
         run: ./gradlew assembleDebug
