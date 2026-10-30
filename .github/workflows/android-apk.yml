@@ -24,6 +24,11 @@ jobs:
         run: npm install
       - name: Generate native Android project
         run: npx expo prebuild --platform android --clean --no-install
+      - name: Inspect Expo autolinking metadata
+        run: |
+          find node_modules -name expo-module.config.json -print -exec cat {} \\\;
+          echo '--- generated autolinking metadata ---'
+          find android -iname '*autolink*json' -o -iname '*modules*.json' | head -30
       - name: Build installable debug APK
         working-directory: android
         run: ./gradlew assembleDebug
